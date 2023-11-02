@@ -20,7 +20,7 @@ function Conter() {
           dispatch(incHandler());
         }}
       >
-        inc
+        inclrement
       </button>
 
       <button

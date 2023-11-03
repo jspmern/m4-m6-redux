@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Conter from "./Conter";
+import FetchData from "./FetchData";
 function App() {
  
   return (
@@ -9,6 +10,9 @@ function App() {
         <h1>Redux</h1>
         <br />
           <Conter />
+          <br/>
+          <hr/>
+          <FetchData/>
          
       </header>
     </div>

@@ -1,16 +1,43 @@
-import { dec, inc, text } from "./actionType"
+import { dec, error, fetched, inc, loading, text } from "./actionType";
 
 //function creater
-function incHandler()
-{
-   return {type:inc}
+
+//inchandler with async task
+function incHandler() {
+  return (dispatch) => {
+    console.log("hello1");
+    setTimeout(() => {
+      console.log("hello2");
+      dispatch({ type: inc });
+      console.log("hello3");
+    }, 2000);
+    console.log("hello4");
+  };
 }
-function decHandler()
-{
-   return {type:dec}
+//this is for dec
+function decHandler() {
+  return { type: dec };
 }
-function textHandler(e)
-{
-    return {type:text,payload:e}
+//this is for text field
+function textHandler(e) {
+  return { type: text, payload: e };
 }
-export {incHandler,decHandler,textHandler}
+
+//create action creator by using thunk for fetch
+
+function fetchHandler() {
+  let url = "https://jsonplaceholder.typicode.com/posts";
+  return async (dispatch) => {
+    dispatch({ type: loading });
+    try {
+      let res = (await fetch(url)).json();
+      let data = await res
+      dispatch({ type: fetched, payload: data });
+    } catch (e) {
+      dispatch({ type: error, payload: e });
+    }
+  };
+}
+
+//export together
+export { incHandler, decHandler, textHandler ,fetchHandler};

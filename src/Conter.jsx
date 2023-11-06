@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decHandler, incHandler, textHandler } from "./Redux/action";
-
+import  style from'./Counter.module.css'
 function Conter() {
   let x = useSelector((data) => {
     return data.counterReducer;
@@ -13,7 +13,7 @@ function Conter() {
   let dispatch = useDispatch();
   return (
     <>
-      <h1>inc:{x.inc}</h1>
+      <h1 className={style.bgcolor}>inc:{x.inc}</h1>
       <h1>dec:{x.dec}</h1>
       <button
         onClick={() => {

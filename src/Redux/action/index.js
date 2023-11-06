@@ -1,4 +1,4 @@
-import { dec, error, fetched, inc, loading, text } from "./actionType";
+import { dec, error, fetched, inc, incNew, loading, text } from "./actionType";
 
 //function creater
 
@@ -39,5 +39,10 @@ function fetchHandler() {
   };
 }
 
+function   incHandlerNew()
+{
+  return {type:incNew}
+}
+
 //export together
-export { incHandler, decHandler, textHandler ,fetchHandler};
+export { incHandler, decHandler, textHandler ,fetchHandler,incHandlerNew};

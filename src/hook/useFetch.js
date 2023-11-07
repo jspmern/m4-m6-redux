@@ -10,18 +10,23 @@ function useFetch(url,method,body) {
    }
   let [data, setData] = useState();
   function fetchdata() {
+    //dispatch({type:"Loding"})
     fetch(url,optionalReq)
       .then((item) => {
         return item.json();
       })
       .then((data) => {
         console.log("hii i am inside customhook", data);
+       // dispatch({type:"fetched",payload:data})
         setData(data);
-      });
+      }).catch((err)=>{
+           //dispatch({type:"err",paylaod:err})
+      })
   }
   useEffect(() => {
     fetchdata();
   },[]);
+  //insted of returning state you have to return data state form redux store
   return { data };
 }
 
